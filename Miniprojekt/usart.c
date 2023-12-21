@@ -7,13 +7,13 @@ void USART_INIT(void)
 {
 	CLEARBIT(DDRD, 0);
 	SETBIT(DDRD, 1);
-	UBRR0 = 51;
+	UBRR0 = 12;
 	UCSR0B = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0);
 	UCSR0C = (1<<USBS0) | (1<<UCSZ01) | (1<<UCSZ00);
 
 
 	SETBIT(DDRD, 3);
-	UBRR1 = 51;
+	UBRR1 = 12;
 	UCSR1B = (1<<TXEN1);
 	UCSR1C = (1<<USBS1) | (1<<UCSZ11) | (1<<UCSZ10);
 	
@@ -50,7 +50,7 @@ uint8_t USART0_TX(char data)
 	return 0;
 }
 
-uint8_t USART0_TX_STRING(char* data)
+void USART0_TX_STRING(char* data)
 {
 	for (int i = 0; i<strlen(data); i++)
 	{
